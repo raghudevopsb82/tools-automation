@@ -24,7 +24,10 @@ variable "secrets" {
         payment_endpoint   = "http://payment-dev.azdevopsb82.online:8080"
         shipping_endpoint  = "http://shipping-dev.azdevopsb82.online:8080"
       }
-      #catalogue = {}
+      catalogue = {
+        MONGO = "true"
+        MONGO_URL = "mongodb://mongodb-dev.azdevopsb82.online:27017/catalogue"
+      }
     }
   }
 }
