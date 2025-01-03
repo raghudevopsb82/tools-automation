@@ -6,9 +6,19 @@ resource "vault_mount" "main" {
   description = each.key
 }
 
+resource "vault_kv_secret" "secret" {
+  path = "infra/ssh"
+  data_json = jsonencode(var.secrets["infra"].ssh)
+}
+
 variable "secrets" {
   default = {
-    infra = {}
+    infra = {
+      ssh = {
+        admin_username = "roboshop-ansible",
+        admin_password = "DevOps@123456"
+      }
+    }
     roboshop-dev = {}
   }
 }
