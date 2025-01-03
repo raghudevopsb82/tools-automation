@@ -7,8 +7,8 @@ resource "vault_mount" "main" {
 
 resource "vault_kv_secret" "secret" {
   depends_on = [vault_mount.main]
-  for_each  = var.secrets
-  path      = "${var.kv_path}/${each.key}"
-  data_json = jsonencode(each.value)
+  for_each   = var.secrets
+  path       = "${var.kv_path}/${each.key}"
+  data_json  = jsonencode(each.value)
 }
 
