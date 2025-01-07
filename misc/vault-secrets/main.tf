@@ -56,6 +56,11 @@ variable "secrets" {
       shipping = {
         CART_ENDPOINT = "cart-dev.azdevopsb82.online:8080"
         DB_HOST       = "mysql-dev.azdevopsb82.online"
+        DB_TYPE       = "mysql"
+        APP_GIT_URL   = "https://github.com/roboshop-devops-project-v3/shipping"
+        DB_HOST       = "mysql-dev.azdevopsb82.online"
+        DB_USER       = "root"
+        DB_PASS       = "RoboShop@1"
       }
       payment = {
         CART_HOST = "cart-dev.azdevopsb82.online"
