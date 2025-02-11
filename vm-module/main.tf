@@ -113,6 +113,11 @@ resource "azurerm_virtual_machine" "main" {
   tags = {
     component = var.component
   }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
 }
 
 
