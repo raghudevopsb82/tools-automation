@@ -25,10 +25,20 @@
     token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.azdevopsb82.online:8200') }}"
   ignore_errors: yes
 
-- name: Start Github Runner
-  ansible.builtin.shell: ./svc.sh install ; ./svc.sh start
-  args:
-    chdir: /github-runner
+- name: Copy Service
+  ansible.builtin.template:
+    src: github-runner.service
+    dest: /etc/systemd/system/github-runner.service
+
+- name: Start Service
+  ansible.builtin.systemd_service:
+    name: github-runner
+    state: started
+    enabled: yes
+    daemon-reload: yes
+
+
+
 
 
 
