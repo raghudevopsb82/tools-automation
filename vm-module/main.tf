@@ -121,7 +121,7 @@ resource "azurerm_virtual_machine" "main" {
 }
 
 output "vm" {
-  value = azurerm_virtual_machine.main
+  value = azurerm_virtual_machine.main.identity
 }
 
 # resource "azurerm_role_assignment" "role-assignment" {
