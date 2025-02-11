@@ -12,3 +12,10 @@
     remote_src: yes
 
 
+- name: Install libicu
+  ansible.builtin.dnf:
+    name: libicu
+    state: installed
+
+
+
