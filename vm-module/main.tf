@@ -120,5 +120,11 @@ resource "azurerm_virtual_machine" "main" {
 
 }
 
+resource "azurerm_role_assignment" "role-assignment" {
+  count                = var.role_definition_name == null ? 0 : 1
+  scope                = data.azurerm_resource_group.main.id
+  role_definition_name = var.role_definition_name
+  principal_id         = azurerm_virtual_machine.main.identity.principal_id
+}
 
 
