@@ -11,11 +11,19 @@
     group: github-runner
     remote_src: yes
 
-
 - name: Install libicu
   ansible.builtin.dnf:
     name: libicu
     state: installed
+
+- name: Configure runner
+  ansible.builtin.shell: ./config.sh --url https://github.com/raghudevopsb82 --token {{ token }} --runnergroup Default --name github-runner-az --labels self-hosted --work _work --replace
+  args:
+    chdir: /github-runner
+  become_user: github-runner
+  vars:
+    token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.azdevopsb82.online:8200') }}"
+
 
 
 
