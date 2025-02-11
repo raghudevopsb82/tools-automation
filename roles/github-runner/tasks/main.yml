@@ -23,6 +23,12 @@
   become_user: github-runner
   vars:
     token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.azdevopsb82.online:8200') }}"
+  ignore_errors: yes
+
+- name: Start Github Runner
+  ansible.builtin.shell: ./svc.sh install ; ./svc.sh start
+  args:
+    chdir: /github-runner
 
 
 
