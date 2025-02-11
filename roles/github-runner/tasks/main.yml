@@ -1,0 +1,5 @@
+- name: Add github runner user
+  ansible.builtin.user:
+    name: github-runner
+    home: /github-runner
+
