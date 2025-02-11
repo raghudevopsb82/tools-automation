@@ -9,4 +9,6 @@
     dest: /github-runner
     owner: github-runner
     group: github-runner
+    remote_src: yes
+
 
