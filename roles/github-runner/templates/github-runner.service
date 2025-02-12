@@ -5,6 +5,7 @@ After=network.target
 [Service]
 ExecStart=/github-runner/runsvc.sh
 User=github-runner
+Environment=PATH=/github-runner/.local/bin:/github-runner/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 WorkingDirectory=/github-runner
 KillMode=process
 KillSignal=SIGTERM
