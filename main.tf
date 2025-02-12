@@ -21,11 +21,6 @@ variable "tools" {
       #role_definition_name = "Contributor"
     }
 
-    test1 = {
-      port                 = 443
-      #role_definition_name = "Contributor"
-    }
-
   }
 }
 
