@@ -8,7 +8,9 @@ terraform {
 }
 
 # Configure the GitHub Provider
-provider "github" {}
+provider "github" {
+  owner = "raghudevopsb82"
+}
 
 data "github_user" "current" {
   username = "r-devops"
@@ -16,7 +18,7 @@ data "github_user" "current" {
 
 resource "github_repository_environment" "env" {
   environment         = "DEV"
-  repository          = "raghudevopsb83/roboshop-cart"
+  repository          = "roboshop-cart"
   prevent_self_review = false
   reviewers {
     users = [data.github_user.current.id]
