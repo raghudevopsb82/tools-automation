@@ -27,7 +27,7 @@ data "github_user" "current" {
 }
 
 variable "repos" {
-  default = ["cart", "catalogue", "user", "shipping", "payment", "frontend"]
+  default = ["roboshop-cart", "roboshop-catalogue", "roboshop-user", "roboshop-shipping", "roboshop-payment", "roboshop-frontend"]
 }
 
 resource "github_repository_environment" "dev" {
