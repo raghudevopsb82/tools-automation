@@ -24,5 +24,8 @@
     name: ansible
     executable: pip3.12
 
-
+- name: Install Jenkins Pip Module
+  ansible.builtin.pip:
+    name: python-jenkins
+    executable: pip3.12
 
