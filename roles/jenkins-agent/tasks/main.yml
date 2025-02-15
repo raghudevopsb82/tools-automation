@@ -5,6 +5,16 @@
       - fontconfig
     state: installed
 
+- name: Add Jenkins User
+  ansible.builtin.user:
+    name: jenkins
+
+- name: Create Jenkins folder
+  ansble.builtin.file:
+    path: /jenkins
+    owner: jenkins
+    group: jenkins
+
 
 
 
