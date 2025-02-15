@@ -8,5 +8,11 @@
     name: jenkins
     state: installed
 
+- name: Start Jenkins
+  ansible.builtin.systemd_service:
+    name: jenkins
+    state: started
+
+
 
 
