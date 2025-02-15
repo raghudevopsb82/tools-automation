@@ -1,8 +1,10 @@
-- name: Install Java
+- name: Install Java & Python
   ansible.builtin.dnf:
     name:
       - java-17-openjdk
       - fontconfig
+      - python3.12-devel
+      - python3.12-pip
     state: installed
 
 - name: Add Jenkins User
@@ -17,6 +19,10 @@
     owner: jenkins
     group: jenkins
 
+- name: Install Ansible
+  ansible.builtin.pip:
+    name: ansible
+    executable: pip3.12
 
 
 
