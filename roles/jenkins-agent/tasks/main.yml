@@ -10,7 +10,7 @@
     name: jenkins
 
 - name: Create Jenkins folder
-  ansble.builtin.file:
+  ansible.builtin.file:
     path: /jenkins
     owner: jenkins
     group: jenkins
