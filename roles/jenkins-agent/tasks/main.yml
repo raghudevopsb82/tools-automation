@@ -12,6 +12,7 @@
 - name: Create Jenkins folder
   ansible.builtin.file:
     path: /jenkins
+    state: directory
     owner: jenkins
     group: jenkins
 
