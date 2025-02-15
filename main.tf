@@ -25,6 +25,10 @@ variable "tools" {
       port = 8080
     }
 
+    jenkins-agent = {
+      port = 8080
+    }
+
   }
 }
 
