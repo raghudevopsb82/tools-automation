@@ -21,6 +21,10 @@ variable "tools" {
       #role_definition_name = "Contributor"
     }
 
+    jenkins = {
+      port = 8080
+    }
+
   }
 }
 
