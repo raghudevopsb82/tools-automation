@@ -30,13 +30,6 @@
     src: github-runner.service
     dest: /etc/systemd/system/github-runner.service
 
-- name: Start Service
-  ansible.builtin.systemd_service:
-    name: github-runner
-    state: restarted
-    enabled: yes
-    daemon-reload: yes
-
 - name: Download Terraform Repo
   ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
@@ -82,6 +75,27 @@
     dest: /opt
     remote_src: yes
 
+- name: Copy docker repo
+  ansible.builtin.template:
+    src: docker.repo
+    dest: /etc/yum.repos.d/docker.repo
+
+- name: Install docker
+  ansible.builtin.dnf:
+    name: docker-ce
+    state: installed
+
+- name: Add user to docker group.
+  ansible.builtin.user:
+    name: github-runner
+    groups: docker
+
+- name: Start Service
+  ansible.builtin.systemd_service:
+    name: github-runner
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
 
 
 
