@@ -29,9 +29,9 @@ variable "tools" {
       port = 8080
     }
 
-    sonarqube = {
-      port = 9000
-    }
+#     sonarqube = {
+#       port = 9000
+#     }
 
   }
 }
