@@ -80,45 +80,45 @@ resource "azurerm_dns_a_record" "public" {
 }
 
 
-resource "azurerm_virtual_machine" "main" {
-  depends_on            = [azurerm_network_interface_security_group_association.main, azurerm_dns_a_record.private]
-  name                  = var.component
-  location              = data.azurerm_resource_group.main.location
-  resource_group_name   = data.azurerm_resource_group.main.name
-  network_interface_ids = [azurerm_network_interface.main.id]
-  vm_size               = "Standard_B2s"
-
-  # Uncomment this line to delete the OS disk automatically when deleting the VM
-  delete_os_disk_on_termination = true
-
-
-  storage_image_reference {
-    id = "/subscriptions/7b6c642c-6e46-418f-b715-e01b2f871413/resourceGroups/trail1/providers/Microsoft.Compute/galleries/LDOTrail/images/rhel9-devops-practice/versions/04.12.2024"
-  }
-
-  storage_os_disk {
-    name              = var.component
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
-  os_profile {
-    computer_name  = var.component
-    admin_username = var.ssh_username
-    admin_password = var.ssh_password
-  }
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
-  tags = {
-    component = var.component
-  }
-
-#   identity {
-#     type = "SystemAssigned"
+# resource "azurerm_virtual_machine" "main" {
+#   depends_on            = [azurerm_network_interface_security_group_association.main, azurerm_dns_a_record.private]
+#   name                  = var.component
+#   location              = data.azurerm_resource_group.main.location
+#   resource_group_name   = data.azurerm_resource_group.main.name
+#   network_interface_ids = [azurerm_network_interface.main.id]
+#   vm_size               = "Standard_B2s"
+#
+#   # Uncomment this line to delete the OS disk automatically when deleting the VM
+#   delete_os_disk_on_termination = true
+#
+#
+#   storage_image_reference {
+#     id = "/subscriptions/7b6c642c-6e46-418f-b715-e01b2f871413/resourceGroups/trail1/providers/Microsoft.Compute/galleries/LDOTrail/images/rhel9-devops-practice/versions/04.12.2024"
 #   }
-
-}
+#
+#   storage_os_disk {
+#     name              = var.component
+#     caching           = "ReadWrite"
+#     create_option     = "FromImage"
+#     managed_disk_type = "Standard_LRS"
+#   }
+#   os_profile {
+#     computer_name  = var.component
+#     admin_username = var.ssh_username
+#     admin_password = var.ssh_password
+#   }
+#   os_profile_linux_config {
+#     disable_password_authentication = false
+#   }
+#   tags = {
+#     component = var.component
+#   }
+#
+# #   identity {
+# #     type = "SystemAssigned"
+# #   }
+#
+# }
 
 # resource "azurerm_role_assignment" "role-assignment" {
 #   depends_on           = [azurerm_virtual_machine.main]
