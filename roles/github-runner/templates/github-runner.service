@@ -3,7 +3,7 @@ Description=GitHub Actions Runner (raghudevopsb82.github-runner-az)
 After=network.target
 
 [Service]
-ExecStart=/github-runner/runsvc.sh
+ExecStart=/github-runner/run.sh
 User=github-runner
 Environment=PATH=/github-runner/.local/bin:/github-runner/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 WorkingDirectory=/github-runner
