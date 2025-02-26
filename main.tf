@@ -21,21 +21,21 @@ variable "tools" {
       #role_definition_name = "Contributor"
     }
 
-    jenkins = {
-      port = 8080
-    }
-
-    jenkins-agent = {
-      port = 8080
-    }
-
-    prometheus = {
-      port = 9090
-    }
-
-    prom-node = {
-      port = 9100
-    }
+#     jenkins = {
+#       port = 8080
+#     }
+#
+#     jenkins-agent = {
+#       port = 8080
+#     }
+#
+#     prometheus = {
+#       port = 9090
+#     }
+#
+#     prom-node = {
+#       port = 9100
+#     }
 
 #     sonarqube = {
 #       port = 9000
