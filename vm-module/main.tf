@@ -71,13 +71,13 @@ resource "azurerm_dns_a_record" "private" {
   records             = [azurerm_network_interface.main.private_ip_address]
 }
 
-resource "azurerm_dns_a_record" "public" {
-  name                = var.component
-  zone_name           = "azdevopsb82.online"
-  resource_group_name = data.azurerm_resource_group.main.name
-  ttl                 = 10
-  records             = [azurerm_public_ip.main.ip_address]
-}
+# resource "azurerm_dns_a_record" "public" {
+#   name                = var.component
+#   zone_name           = "azdevopsb82.online"
+#   resource_group_name = data.azurerm_resource_group.main.name
+#   ttl                 = 10
+#   records             = [azurerm_public_ip.main.ip_address]
+# }
 
 
 # resource "azurerm_virtual_machine" "main" {
