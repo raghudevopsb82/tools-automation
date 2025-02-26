@@ -22,7 +22,7 @@
     chdir: /github-runner
   become_user: github-runner
   vars:
-    token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.azdevopsb82.online:8200') }}"
+    token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://10.1.0.7:8200') }}"
   ignore_errors: yes
 
 - name: Copy Service
