@@ -96,8 +96,8 @@
     state: restarted
     enabled: yes
 
-- name: ACR Login
-  ansible.builtin.shell: az acr login --name roboshopb82new
+# - name: ACR Login
+#   ansible.builtin.shell: az acr login --name roboshopb82new
 
 - name: Start Service
   ansible.builtin.systemd_service:
