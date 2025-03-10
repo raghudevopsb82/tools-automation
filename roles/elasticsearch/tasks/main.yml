@@ -3,16 +3,23 @@
     src: elastic.repo
     dest: /etc/yum.repos.d/elastic.repo
 
-- name: Install Elasticsearch
+- name: Install ELK
   ansible.builtin.dnf:
-    name: elasticsearch
+    name:
+      - elasticsearch
+      - kibana
+      - logstash
     state: installed
 
-- name: Start elasticsearch
+- name: Start ELK
   ansible.builtin.systemd_service:
-    name: elasticsearch
+    name: "{{ item }}"
     state: started
     enabled: yes
+  loop:
+    - elasticsearch
+    - kibana
+    - logstash
 
 
 
