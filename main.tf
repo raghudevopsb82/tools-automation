@@ -4,7 +4,7 @@ module "vm" {
   component    = each.key
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
-  port         = each.value["port"]
+  ports        = each.value["ports"]
   vm_size      = each.value["vm_size"]
   #role_definition_name = each.value["role_definition_name"]
 }
@@ -13,20 +13,31 @@ variable "tools" {
   default = {
 
     vault = {
-      port = 8200
-      #role_definition_name = null
       vm_size = "Standard_B2s"
+      ports = {
+        vault = {
+          name     = "vault"
+          priority = 101
+          port     = 8200
+        }
+      }
     }
 
     github-runner = {
       port = 443
-      #role_definition_name = "Contributor"
       vm_size = "Standard_B2s"
+      ports = {}
     }
 
     elasticsearch = {
-      port    = 9100
       vm_size = "Standard_E2s_v3"
+      ports = {
+        elasticsearch = {
+          name     = "elasticsearch"
+          priority = 101
+          port     = 9200
+        }
+      }
     }
 
     #     jenkins = {
