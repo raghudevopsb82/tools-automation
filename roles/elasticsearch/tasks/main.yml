@@ -1,0 +1,5 @@
+- name: Install Elasticsearch
+  ansible.builtin.dnf:
+    name: elasticsearch
+    state: installed
+
