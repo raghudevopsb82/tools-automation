@@ -23,6 +23,20 @@ variable "tools" {
       }
     }
 
+
+    sonarqube = {
+      vm_size = "Standard_E2s_v3"
+      ports = {
+        sonarqube = {
+          name     = "sonarqube"
+          priority = 101
+          port     = 9000
+        }
+      }
+    }
+
+
+
     github-runner = {
       port = 443
       vm_size = "Standard_B2s"
