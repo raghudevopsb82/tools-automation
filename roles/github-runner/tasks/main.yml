@@ -106,6 +106,17 @@
     enabled: yes
     daemon-reload: yes
 
+- name: Copy trivy repo
+  ansible.builtin.template:
+    src: trivy.repo
+    dest: /etc/yum.repos.d/trivy.repo
+
+- name: Install Trivy
+  ansible.builtin.dnf:
+    name: trivy
+    state: installed
+
+
 
 
 
